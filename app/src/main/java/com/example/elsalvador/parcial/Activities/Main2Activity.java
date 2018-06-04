@@ -1,9 +1,7 @@
-package com.example.elsalvador.parcial;
+package com.example.elsalvador.parcial.Activities;
 
+import android.app.Fragment;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
-import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
@@ -13,8 +11,18 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import com.example.elsalvador.parcial.Fragment.CSGO;
+import com.example.elsalvador.parcial.Fragment.Dota;
+import com.example.elsalvador.parcial.Fragment.LOL;
+import com.example.elsalvador.parcial.Fragment.News;
+import com.example.elsalvador.parcial.R;
+import com.example.elsalvador.parcial.Fragment.Set;
+import com.example.elsalvador.parcial.Fragment.fav;
+
 public class Main2Activity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
+
+    private Fragment changefragment;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,14 +31,6 @@ public class Main2Activity extends AppCompatActivity
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -39,7 +39,7 @@ public class Main2Activity extends AppCompatActivity
         toggle.syncState();
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
-        navigationView.setNavigationItemSelectedListener(this);
+         navigationView.setNavigationItemSelectedListener(this);
     }
 
     @Override
@@ -81,23 +81,31 @@ public class Main2Activity extends AppCompatActivity
         int id = item.getItemId();
 
         if (id == R.id.News) {
-            // Handle the camera action
-        } else if (id == R.id.News) {
-
-        } else if (id == R.id.LOL) {
-
+            replaceFragment(new News());
+        }  else if (id == R.id.LOL) {
+            replaceFragment(new LOL());
         } else if (id == R.id.Dota) {
-
+            replaceFragment(new Dota());
         } else if (id == R.id.CSGO) {
-
+            replaceFragment(new CSGO());
         } else if (id == R.id.Set) {
-
+            replaceFragment(new Set());
         }else if (id == R.id.Fav) {
-
+            replaceFragment(new fav());
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
+
     }
+
+    private void replaceFragment(Fragment fragment) {
+        if (changefragment == null || !fragment.getClass().getName().equals(changefragment.getClass().getName())) {
+            getFragmentManager().beginTransaction().replace(R.id.replacefragment, fragment).commit();
+            changefragment = fragment;
+        }
+
+    }
+
 }

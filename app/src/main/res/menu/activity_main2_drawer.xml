@@ -5,6 +5,7 @@
 
     <group android:checkableBehavior="single">
         <item
+            android:icon="@drawable/ic_event_note_black_24dp"
             android:id="@+id/News"
             android:title="News" />
 
@@ -14,13 +15,16 @@
             <menu>
 
                 <item
+                    android:icon="@drawable/ic_videogame_asset_black_24dp"
                     android:id="@+id/LOL"
                     android:title="Legue of Legends" />
                 <item
+                    android:icon="@drawable/ic_videogame_asset_black_24dp"
                     android:id="@+id/Dota"
                     android:title="Dota" />
 
                 <item
+                    android:icon="@drawable/ic_videogame_asset_black_24dp"
                     android:id="@+id/CSGO"
                     android:title="CS GO" />
             </menu>
@@ -28,9 +32,11 @@
         <item android:title="">
             <menu>
                 <item
+                    android:icon="@drawable/ic_settings_black_24dp"
                     android:id="@+id/Set"
                     android:title="Settings" />
                 <item
+                    android:icon="@drawable/ic_favorite_border_black_24dp"
                     android:id="@+id/Fav"
                     android:title="Favoritos" />
             </menu>
