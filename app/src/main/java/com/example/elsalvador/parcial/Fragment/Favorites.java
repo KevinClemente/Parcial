@@ -1,8 +1,8 @@
 package com.example.elsalvador.parcial.Fragment;
 
 
-import android.app.Fragment;
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,10 +13,10 @@ import com.example.elsalvador.parcial.R;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class Dota extends Fragment {
+public class Favorites extends Fragment {
 
 
-    public Dota() {
+    public Favorites() {
         // Required empty public constructor
     }
 
@@ -25,7 +25,7 @@ public class Dota extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_dota, container, false);
+        return inflater.inflate(R.layout.fragment_favorites, container, false);
     }
 
 }

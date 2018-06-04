@@ -1,8 +1,8 @@
 package com.example.elsalvador.parcial.Activities;
 
-import android.app.Fragment;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
+import android.support.v4.app.Fragment;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
@@ -11,13 +11,13 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 
-import com.example.elsalvador.parcial.Fragment.CSGO;
-import com.example.elsalvador.parcial.Fragment.Dota;
-import com.example.elsalvador.parcial.Fragment.LOL;
+import com.example.elsalvador.parcial.Fragment.Fragment_Games;
+import com.example.elsalvador.parcial.Fragment.Generals;
+import com.example.elsalvador.parcial.Fragment.Top;
 import com.example.elsalvador.parcial.Fragment.News;
 import com.example.elsalvador.parcial.R;
 import com.example.elsalvador.parcial.Fragment.Set;
-import com.example.elsalvador.parcial.Fragment.fav;
+import com.example.elsalvador.parcial.Fragment.Images;
 
 public class Main2Activity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -27,7 +27,7 @@ public class Main2Activity extends AppCompatActivity
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main2);
+        setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
@@ -83,15 +83,15 @@ public class Main2Activity extends AppCompatActivity
         if (id == R.id.News) {
             replaceFragment(new News());
         }  else if (id == R.id.LOL) {
-            replaceFragment(new LOL());
+            replaceFragment(new Top());
         } else if (id == R.id.Dota) {
-            replaceFragment(new Dota());
+            replaceFragment(new Generals());
         } else if (id == R.id.CSGO) {
-            replaceFragment(new CSGO());
+            replaceFragment(new Fragment_Games());
         } else if (id == R.id.Set) {
             replaceFragment(new Set());
         }else if (id == R.id.Fav) {
-            replaceFragment(new fav());
+            replaceFragment(new Images());
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -102,7 +102,7 @@ public class Main2Activity extends AppCompatActivity
 
     private void replaceFragment(Fragment fragment) {
         if (changefragment == null || !fragment.getClass().getName().equals(changefragment.getClass().getName())) {
-            getFragmentManager().beginTransaction().replace(R.id.replacefragment, fragment).commit();
+            getSupportFragmentManager().beginTransaction().replace(R.id.replacefragment, fragment).commit();
             changefragment = fragment;
         }
 

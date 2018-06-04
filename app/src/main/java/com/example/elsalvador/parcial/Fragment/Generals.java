@@ -1,8 +1,8 @@
 package com.example.elsalvador.parcial.Fragment;
 
 
-import android.app.Fragment;
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,10 +13,10 @@ import com.example.elsalvador.parcial.R;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class LOL extends Fragment {
+public class Generals extends Fragment {
 
 
-    public LOL() {
+    public Generals() {
         // Required empty public constructor
     }
 
@@ -25,7 +25,7 @@ public class LOL extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_lol, container, false);
+        return inflater.inflate(R.layout.fragments_generals, container, false);
     }
 
 }
