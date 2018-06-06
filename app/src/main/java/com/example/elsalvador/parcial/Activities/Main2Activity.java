@@ -13,8 +13,7 @@ import android.view.MenuItem;
 
 import com.example.elsalvador.parcial.Fragment.Fragment_Games;
 import com.example.elsalvador.parcial.Fragment.Generals;
-import com.example.elsalvador.parcial.Fragment.Top;
-import com.example.elsalvador.parcial.Fragment.News;
+import com.example.elsalvador.parcial.Fragment.notice;
 import com.example.elsalvador.parcial.R;
 import com.example.elsalvador.parcial.Fragment.Set;
 import com.example.elsalvador.parcial.Fragment.Images;
@@ -40,6 +39,9 @@ public class Main2Activity extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
          navigationView.setNavigationItemSelectedListener(this);
+
+         // navigationView.setCheckedItem(R.id.nav_news);
+        //changeFragment(new NewsFragment());
     }
 
     @Override
@@ -81,17 +83,16 @@ public class Main2Activity extends AppCompatActivity
         int id = item.getItemId();
 
         if (id == R.id.News) {
-            replaceFragment(new News());
+            replaceFragment(new notice());
         }  else if (id == R.id.LOL) {
-            replaceFragment(new Top());
+            replaceFragment(new Fragment_Games());
         } else if (id == R.id.Dota) {
-            replaceFragment(new Generals());
+            replaceFragment(new Fragment_Games());
         } else if (id == R.id.CSGO) {
             replaceFragment(new Fragment_Games());
         } else if (id == R.id.Set) {
-            replaceFragment(new Set());
         }else if (id == R.id.Fav) {
-            replaceFragment(new Images());
+
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
