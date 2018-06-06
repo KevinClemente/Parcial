@@ -36,7 +36,7 @@ public class notice extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         v = inflater.inflate(R.layout.fragment_news,container,false);
-        newsRecyclerViews = (RecyclerView) v.findViewById(R.id.news_recyclerview);
+        newsRecyclerViews = (RecyclerView) v.findViewById(R.id. news_recyclerview);
         AdapterCardview recyclerViewAdapter = new AdapterCardview(getContext(), listOfNews);
         newsRecyclerViews.setLayoutManager(new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL));
         newsRecyclerViews.setAdapter(recyclerViewAdapter);

@@ -34,7 +34,7 @@ public class Fragment_Games extends Fragment {
         ColumnElements.AddFragment(new Generals(), "GENERALS");
         ColumnElements.AddFragment(new Top(), "TOP PLAYERS");
         ColumnElements.AddFragment(new Images(), "IMAGES");
-        TabLayoutMenu.setTabTextColors(Color.parseColor("#000"), Color.parseColor("#901"));
+        TabLayoutMenu.setTabTextColors(Color.parseColor("#727272"), Color.parseColor("#ffffff"));
 
 
         AllColumns.setAdapter(ColumnElements);
