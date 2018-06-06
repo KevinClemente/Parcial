@@ -1,5 +1,6 @@
 package com.example.elsalvador.parcial.Activities;
 
+import android.app.FragmentManager;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.Fragment;
@@ -81,18 +82,32 @@ public class Main2Activity extends AppCompatActivity
     public boolean onNavigationItemSelected(MenuItem item) {
         // Handle navigation view item clicks here.
         int id = item.getItemId();
+        FragmentManager fragmentManager = getFragmentManager();
 
-        if (id == R.id.News) {
-            replaceFragment(new notice());
-        }  else if (id == R.id.LOL) {
-            replaceFragment(new Fragment_Games());
-        } else if (id == R.id.Dota) {
-            replaceFragment(new Fragment_Games());
-        } else if (id == R.id.CSGO) {
-            replaceFragment(new Fragment_Games());
-        } else if (id == R.id.Set) {
-        }else if (id == R.id.Fav) {
+        switch (id) {
+            case R.id.News:
+                replaceFragment(new notice());
+                break;
 
+            case R.id.LOL:
+                replaceFragment(new Fragment_Games());
+                break;
+
+            case R.id.Dota:
+                replaceFragment(new Fragment_Games());
+                break;
+
+            case R.id.CSGO:
+                replaceFragment(new Fragment_Games());
+                break;
+
+            //case R.id.Set:
+            // replaceFragment(new GameInfoFragment());
+            //    break;
+
+            //case R.id.Fav:
+            //    replaceFragment(new GameInfoFragment());
+            //    break;
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
