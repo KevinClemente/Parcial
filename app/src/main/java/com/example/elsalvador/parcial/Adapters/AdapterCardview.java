@@ -35,8 +35,8 @@ public class AdapterCardview extends RecyclerView.Adapter<AdapterCardview.MyView
 
         @Override
         public void onBindViewHolder(MyViewHolder holder, int position) {
-            holder.newsTitle.setText(NewsListData.get(position).getTitleOfNews());
-            holder.newsSubtitle.setText(NewsListData.get(position).getSubtitleOfNews());
+            holder.newsTitle.setText(NewsListData.get(position).getTitle());
+            holder.newsSubtitle.setText(NewsListData.get(position).getGame());
 
             final ViewGroup.LayoutParams lp = holder.itemView.getLayoutParams();
             if (position == 0 || position%3==0) {
