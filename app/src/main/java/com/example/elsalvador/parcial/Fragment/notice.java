@@ -11,7 +11,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.elsalvador.parcial.Adapters.AdapterCardview;
-import com.example.elsalvador.parcial.Interface.Conexion;
+import com.example.elsalvador.parcial.Interface.RequestHelper;
 import com.example.elsalvador.parcial.Object.News;
 import com.example.elsalvador.parcial.R;
 
@@ -35,7 +35,7 @@ public class notice extends Fragment {
 
     View v;
     String baseUrl;
-    private Conexion conexion;
+    private RequestHelper requestHelper;
     private Retrofit retrofit;
     private Call<List<News>> call;
     private List<News> listOfNewsToSend;
@@ -68,9 +68,9 @@ public class notice extends Fragment {
                     .build();
         }
 
-        conexion = retrofit.create(Conexion.class);
+        requestHelper = retrofit.create(RequestHelper.class);
 
-        call = conexion.getNewsRequest("Bearer "+globalToken);
+        call = requestHelper.getNewsRequest("Bearer "+globalToken);
 
         call.enqueue(new Callback<List<News>>() {
             @Override

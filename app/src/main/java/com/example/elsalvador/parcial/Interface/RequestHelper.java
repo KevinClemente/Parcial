@@ -1,6 +1,7 @@
 package com.example.elsalvador.parcial.Interface;
 
 import com.example.elsalvador.parcial.Object.News;
+import com.example.elsalvador.parcial.Object.TopPlayers;
 import com.example.elsalvador.parcial.Object.usuario;
 
 import java.util.List;
@@ -12,7 +13,7 @@ import retrofit2.http.GET;
 import retrofit2.http.Header;
 import retrofit2.http.POST;
 
-public interface Conexion {
+public interface RequestHelper {
     @FormUrlEncoded
     @POST("login")
 
@@ -21,6 +22,6 @@ public interface Conexion {
     @GET("news")
     Call<List<News>> getNewsRequest(@Header("Authorization") String token);
 
-   // @GET("players")
-    //Call<List<ObjetTop>> getTopPlayersRequest(@Header("Authorization") String token);
+    @GET("players")
+    Call<List<TopPlayers>> getTopPlayersRequest(@Header("Authorization") String token);
 }

@@ -39,9 +39,9 @@ public class Main2Activity extends AppCompatActivity
         toggle.syncState();
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
-         navigationView.setNavigationItemSelectedListener(this);
+        navigationView.setNavigationItemSelectedListener(this);
 
-         // navigationView.setCheckedItem(R.id.nav_news);
+        // navigationView.setCheckedItem(R.id.nav_news);
         //changeFragment(new NewsFragment());
     }
 
