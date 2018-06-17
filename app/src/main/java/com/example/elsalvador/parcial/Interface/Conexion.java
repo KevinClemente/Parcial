@@ -12,15 +12,16 @@ import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
 import retrofit2.http.Header;
 import retrofit2.http.POST;
+import retrofit2.http.Query;
 
-public interface RequestHelper {
+public interface Conexion {
     @FormUrlEncoded
     @POST("login")
 
     Call<User> loginRequest(@Field("user") String username, @Field("password") String password);
 
     @GET("news")
-    Call<List<News>> getNewsRequest(@Header("Authorization") String token);
+    Call<List<News>> getNewsRequest(@Header("Authorization") String token, @Query("sort") String order);
 
     @GET("players")
     Call<List<TopPlayers>> getTopPlayersRequest(@Header("Authorization") String token);

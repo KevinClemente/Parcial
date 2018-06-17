@@ -20,7 +20,7 @@ package="com.example.elsalvador.parcial">
     <!-- NAVIGATION DRAWER -->
     <activity
         android:name=".Activities.Main2Activity"
-        android:label="title_activity_navigation_drawer"
+        android:label="@string/GN"
         android:theme="@style/AppTheme.NoActionBar" />
 
     <!-- LOGIN -->
@@ -32,9 +32,9 @@ package="com.example.elsalvador.parcial">
         </intent-filter>
     </activity>
     <activity android:name=".Activities.Settings" />
-    <activity android:name=".Activities.ShowNews" />
-    <activity android:name=".Activities.ShowTopPlayers" />
-    <activity android:name=".Activities.ShowImages"></activity>
+    <activity android:name=".Activities.MostrarNoticias" />
+    <activity android:name=".Activities.MostrarJugadores" />
+    <activity android:name=".Activities.MostrarImagenes"></activity>
 </application>
 
 </manifest>

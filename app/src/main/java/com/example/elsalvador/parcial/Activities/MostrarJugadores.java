@@ -6,11 +6,11 @@ import android.os.Bundle;
 import com.example.elsalvador.parcial.R;
 
 
-public class ShowTopPlayers extends AppCompatActivity {
+public class MostrarJugadores extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_show_top_players);
+        setContentView(R.layout.activity_mostrar_jugadores);
     }
 }

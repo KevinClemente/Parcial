@@ -21,7 +21,7 @@
                 <item
                     android:icon="@drawable/ic_videogame_asset_black_24dp"
                     android:id="@+id/Dota"
-                    android:title="Dota" />
+                    android:title="Overwatch" />
 
                 <item
                     android:icon="@drawable/ic_videogame_asset_black_24dp"

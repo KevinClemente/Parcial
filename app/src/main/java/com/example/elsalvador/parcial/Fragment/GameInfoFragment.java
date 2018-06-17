@@ -1,6 +1,5 @@
 package com.example.elsalvador.parcial.Fragment;
 
-
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -13,14 +12,21 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.example.elsalvador.parcial.Adapters.ViewPagerAdapter;
 import com.example.elsalvador.parcial.R;
-import com.example.elsalvador.parcial.Adapters.adaptadorViewPager;
+
 
 public class GameInfoFragment extends Fragment {
+
+    private View view;
     private TabLayout TabLayoutMenu;
     private ViewPager AllColumns;
-    private  adaptadorViewPager ColumnElements;
-    View view;
+    private ViewPagerAdapter ColumnElements;
+    private String actualGame = null;
+    private GeneralsFragment generalsFragment;
+    private TopPlayersFragment topPlayersFragment;
+    private ImagesFragment imagesFragment;
+    private ActionBar ActionBarMenu;
 
     @Nullable
     @Override
@@ -29,20 +35,36 @@ public class GameInfoFragment extends Fragment {
 
         TabLayoutMenu = (TabLayout) view.findViewById(R.id.tablayout_menu);
         AllColumns = (ViewPager) view.findViewById(R.id.viewpager);
-        ColumnElements = new adaptadorViewPager(getChildFragmentManager());
+        ColumnElements = new ViewPagerAdapter(getChildFragmentManager());
 
-        ColumnElements.AddFragment(new GeneralsFragment(), "GENERALS");
-        ColumnElements.AddFragment(new TopPlayersFragment(), "TOP PLAYERS");
-        ColumnElements.AddFragment(new ImagesFragment(), "IMAGES");
+        generalsFragment = new GeneralsFragment();
+        generalsFragment.newInstance(actualGame);
+        ColumnElements.AddFragment(generalsFragment, "GENERALS");
+
+        topPlayersFragment = new TopPlayersFragment();
+        topPlayersFragment.newInstance(actualGame);
+        ColumnElements.AddFragment(topPlayersFragment, "TOP PLAYERS");
+
+        imagesFragment = new ImagesFragment();
+        imagesFragment.newInstance(actualGame);
+        ColumnElements.AddFragment(imagesFragment, "IMAGES");
+
         TabLayoutMenu.setTabTextColors(Color.parseColor("#727272"), Color.parseColor("#ffffff"));
 
 
         AllColumns.setAdapter(ColumnElements);
         TabLayoutMenu.setupWithViewPager(AllColumns);
 
-        ActionBar ActionBarMenu = ((AppCompatActivity)getActivity()).getSupportActionBar();
+        ActionBarMenu = ((AppCompatActivity)getActivity()).getSupportActionBar();
         ActionBarMenu.setElevation(0);
 
         return view;
     }
+
+    public String indicateActualGame(String indicateActualGame){
+        actualGame = indicateActualGame;
+        return actualGame;
+    }
+
+
 }

@@ -16,12 +16,12 @@ import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
-public class AdapterCardviewNews extends RecyclerView.Adapter<AdapterCardviewNews.MyViewHolder>{
+public class RecyclerViewAdapterNews extends RecyclerView.Adapter<RecyclerViewAdapterNews.MyViewHolder>{
 
     Context context;
     List<News> NewsListData;
 
-    public AdapterCardviewNews(Context context, List<News> NewsListData) {
+    public RecyclerViewAdapterNews(Context context, List<News> NewsListData) {
         this.context = context;
         this.NewsListData = NewsListData;
     }

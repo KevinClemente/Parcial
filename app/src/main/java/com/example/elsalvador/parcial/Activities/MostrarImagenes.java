@@ -6,11 +6,11 @@ import android.os.Bundle;
 import com.example.elsalvador.parcial.R;
 
 
-public class ShowImages extends AppCompatActivity {
+public class MostrarImagenes extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_show_images);
+        setContentView(R.layout.activity_mostrar_imagenes);
     }
 }

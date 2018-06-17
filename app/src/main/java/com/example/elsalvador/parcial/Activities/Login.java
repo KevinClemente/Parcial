@@ -8,7 +8,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.example.elsalvador.parcial.Interface.RequestHelper;
+import com.example.elsalvador.parcial.Interface.Conexion;
 import com.example.elsalvador.parcial.Object.User;
 import com.example.elsalvador.parcial.R;
 
@@ -23,7 +23,7 @@ public class Login extends AppCompatActivity{
     private EditText usernarmeEditText;
     private EditText passwordEditText;
     private Button singInButton;
-    private RequestHelper requestHelper;
+    private Conexion conexion;
     private String baseUrl;
     private Retrofit retrofit;
     private Call<User> call;
@@ -54,13 +54,13 @@ public class Login extends AppCompatActivity{
                     .build();
         }
 
-        requestHelper = retrofit.create(RequestHelper.class);
+        conexion = retrofit.create(Conexion.class);
 
         singInButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                call = requestHelper.loginRequest(usernarmeEditText.getText().toString(), passwordEditText.getText().toString());
+                call = conexion.loginRequest(usernarmeEditText.getText().toString(), passwordEditText.getText().toString());
 
                 call.enqueue(new Callback<User>() {
                     @Override

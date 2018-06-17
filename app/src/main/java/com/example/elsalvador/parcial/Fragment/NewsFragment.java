@@ -1,6 +1,5 @@
 package com.example.elsalvador.parcial.Fragment;
 
-
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -10,8 +9,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.example.elsalvador.parcial.Adapters.AdapterCardviewNews;
-import com.example.elsalvador.parcial.Interface.RequestHelper;
+import com.example.elsalvador.parcial.Adapters.RecyclerViewAdapterNews;
+import com.example.elsalvador.parcial.Interface.Conexion;
 import com.example.elsalvador.parcial.Object.News;
 import com.example.elsalvador.parcial.R;
 
@@ -26,21 +25,16 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 import static com.example.elsalvador.parcial.Activities.Login.globalToken;
 
-
-/**
- * A simple {@link Fragment} subclass.
- */
 public class NewsFragment extends Fragment {
 
-
-    View v;
-    String baseUrl;
-    private RequestHelper requestHelper;
+    private View view;
+    private Conexion conexion;
+    private String baseUrl;
     private Retrofit retrofit;
     private Call<List<News>> call;
-    private List<News> listOfNewsToSend;
-    private RecyclerView newsRecyclerViews;
     private List<News> auxiliarList = null;
+    public static List<News> listOfNewsToSend;
+    private RecyclerView newsRecyclerViews;
 
     private String title;
     private String body;
@@ -49,15 +43,28 @@ public class NewsFragment extends Fragment {
     private String description;
     private String created_date;
 
-    public NewsFragment() {
 
+    public NewsFragment(){
     }
-
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        v = inflater.inflate(R.layout.news_fragment,container,false);
+        view = inflater.inflate(R.layout.news_fragment,container,false);
+
+        loadNews(view);
+
+        return view;
+
+
+    }
+
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+    }
+
+    public void loadNews(final View v){
 
         baseUrl = "http://gamenewsuca.herokuapp.com/";
 
@@ -68,9 +75,9 @@ public class NewsFragment extends Fragment {
                     .build();
         }
 
-        requestHelper = retrofit.create(RequestHelper.class);
+        conexion = retrofit.create(Conexion.class);
 
-        call = requestHelper.getNewsRequest("Bearer "+globalToken);
+        call = conexion.getNewsRequest("Bearer "+globalToken,"desc");
 
         call.enqueue(new Callback<List<News>>() {
             @Override
@@ -108,8 +115,10 @@ public class NewsFragment extends Fragment {
                             ,auxiliarList.get(i).get__v()));
                 }
 
+
                 newsRecyclerViews = (RecyclerView) v.findViewById(R.id.news_recyclerview);
-                AdapterCardviewNews adapterCardviewNews = new AdapterCardviewNews(getContext(), listOfNewsToSend);
+                RecyclerViewAdapterNews recyclerViewAdapter = new RecyclerViewAdapterNews(getContext(), listOfNewsToSend);
+
 
                 GridLayoutManager gridLayoutManager = new GridLayoutManager(getContext(), 2);
 
@@ -126,25 +135,16 @@ public class NewsFragment extends Fragment {
                 });
 
                 newsRecyclerViews.setLayoutManager(gridLayoutManager);
-                newsRecyclerViews.setAdapter(adapterCardviewNews);
+                newsRecyclerViews.setAdapter(recyclerViewAdapter);
 
             }
 
             @Override
             public void onFailure(Call<List<News>> call, Throwable t) {
             }
+
         });
-
-        return v;
-
-
     }
-
-    @Override
-    public void onCreate(@Nullable Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-    }
-
 
 
 

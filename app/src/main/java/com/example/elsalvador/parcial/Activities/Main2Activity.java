@@ -1,6 +1,5 @@
 package com.example.elsalvador.parcial.Activities;
 
-import android.app.FragmentManager;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.Fragment;
@@ -11,14 +10,18 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 
+
 import com.example.elsalvador.parcial.Fragment.GameInfoFragment;
 import com.example.elsalvador.parcial.Fragment.NewsFragment;
 import com.example.elsalvador.parcial.R;
 
-public class Main2Activity extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener {
+import java.lang.reflect.GenericArrayType;
 
-    private Fragment changefragment;
+public class Main2Activity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
+
+    private Fragment actualFragment;
+    private String actualGame = null;
+    private GameInfoFragment gameInfoFragment = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,18 +30,15 @@ public class Main2Activity extends AppCompatActivity
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
-        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
-                this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
+        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawer.addDrawerListener(toggle);
         toggle.syncState();
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
-
-        // navigationView.setCheckedItem(R.id.nav_news);
-        //changeFragment(new NewsFragment());
+        navigationView.setCheckedItem(R.id.News);
+        changeFragment(new NewsFragment());
     }
 
     @Override
@@ -51,40 +51,45 @@ public class Main2Activity extends AppCompatActivity
         }
     }
 
-
-
-
     @SuppressWarnings("StatementWithEmptyBody")
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
-        // Handle navigation view item clicks here.
+
         int id = item.getItemId();
-        FragmentManager fragmentManager = getFragmentManager();
 
         switch (id) {
             case R.id.News:
-                replaceFragment(new NewsFragment());
+                changeFragment(new NewsFragment());
                 break;
 
             case R.id.LOL:
-                replaceFragment(new GameInfoFragment());
+                actualGame = "lol";
+                gameInfoFragment = new GameInfoFragment();
+                gameInfoFragment.indicateActualGame(actualGame);
+                changeFragment(gameInfoFragment);
                 break;
 
             case R.id.Dota:
-                replaceFragment(new GameInfoFragment());
+                actualGame = "overwatch";
+                gameInfoFragment = new GameInfoFragment();
+                gameInfoFragment.indicateActualGame(actualGame);
+                changeFragment(gameInfoFragment);
                 break;
 
             case R.id.CSGO:
-                replaceFragment(new GameInfoFragment());
+                actualGame = "csgo";
+                gameInfoFragment = new GameInfoFragment();
+                gameInfoFragment.indicateActualGame(actualGame);
+                changeFragment(gameInfoFragment);
                 break;
 
-            //case R.id.Set:
-            // replaceFragment(new GameInfoFragment());
-            //    break;
+            //case R.id.nav_settings:
+              //  changeFragment(new GameInfoFragment());
+                //break;
 
-            //case R.id.Fav:
-            //    replaceFragment(new GameInfoFragment());
-            //    break;
+            //case R.id.nav_favorites:
+              //  changeFragment(new GameInfoFragment());
+                //break;
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -93,12 +98,25 @@ public class Main2Activity extends AppCompatActivity
 
     }
 
-    private void replaceFragment(Fragment fragment) {
-        if (changefragment == null || !fragment.getClass().getName().equals(changefragment.getClass().getName())) {
+    private void changeFragment(Fragment fragment) {
+        if (actualFragment == null || !fragment.getClass().getName().equals(actualFragment.getClass().getName())) {
             getSupportFragmentManager().beginTransaction().replace(R.id.replacefragment, fragment).commit();
-            changefragment = fragment;
+            actualFragment = fragment;
+        }else if(fragment.getClass().getName().equals(actualFragment.getClass().getName())){
+            getSupportFragmentManager().beginTransaction().remove(fragment).commit();
+            getSupportFragmentManager().beginTransaction().replace(R.id.replacefragment,fragment).commit();
+            actualFragment = fragment;
         }
 
     }
 
 }
+
+
+
+
+
+
+
+
+

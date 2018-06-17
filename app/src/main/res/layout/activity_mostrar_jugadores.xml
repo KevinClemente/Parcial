@@ -4,6 +4,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Activities.ShowTopPlayers">
+    tools:context=".Activities.MostrarJugadores">
 
 </android.support.constraint.ConstraintLayout>
