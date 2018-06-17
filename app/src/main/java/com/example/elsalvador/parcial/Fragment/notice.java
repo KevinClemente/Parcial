@@ -4,13 +4,13 @@ package com.example.elsalvador.parcial.Fragment;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.example.elsalvador.parcial.Adapters.AdapterCardview;
+import com.example.elsalvador.parcial.Adapters.AdapterCardviewNews;
 import com.example.elsalvador.parcial.Interface.RequestHelper;
 import com.example.elsalvador.parcial.Object.News;
 import com.example.elsalvador.parcial.R;
@@ -109,9 +109,24 @@ public class notice extends Fragment {
                 }
 
                 newsRecyclerViews = (RecyclerView) v.findViewById(R.id.news_recyclerview);
-                AdapterCardview adapterCardview= new AdapterCardview(getContext(), listOfNewsToSend);
-                newsRecyclerViews.setLayoutManager(new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL));
-                newsRecyclerViews.setAdapter(adapterCardview);
+                AdapterCardviewNews adapterCardviewNews = new AdapterCardviewNews(getContext(), listOfNewsToSend);
+
+                GridLayoutManager gridLayoutManager = new GridLayoutManager(getContext(), 2);
+
+                gridLayoutManager.setSpanSizeLookup(new GridLayoutManager.SpanSizeLookup(){
+                    @Override
+                    public int getSpanSize(int position) {
+
+                        if ( position%3 == 0) {
+                            return 2;
+                        } else {
+                            return 1;
+                        }
+                    }
+                });
+
+                newsRecyclerViews.setLayoutManager(gridLayoutManager);
+                newsRecyclerViews.setAdapter(adapterCardviewNews);
 
             }
 

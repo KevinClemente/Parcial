@@ -27,6 +27,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:src="@drawable/ic_event_note_black_24dp"
+                android:id="@+id/newsimage"
                 />
         </LinearLayout>
 

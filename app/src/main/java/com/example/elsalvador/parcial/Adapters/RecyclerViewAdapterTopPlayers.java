@@ -50,8 +50,8 @@ public class RecyclerViewAdapterTopPlayers extends RecyclerView.Adapter<Recycler
         public MyViewHolder(View itemView) {
             super(itemView);
 
-            TopPlayerName = (TextView) itemView.findViewById(R.id.top_players_recyclerview);
-            TopPlayerGame = (TextView) itemView.findViewById(R.id.top_players_recyclerview);
+            TopPlayerName = (TextView) itemView.findViewById(R.id.top_players_name);
+            TopPlayerGame = (TextView) itemView.findViewById(R.id.top_players_game);
 
         }
     }
