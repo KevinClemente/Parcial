@@ -30,7 +30,7 @@ import static com.example.elsalvador.parcial.Activities.Login.globalToken;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class notice extends Fragment {
+public class NewsFragment extends Fragment {
 
 
     View v;
@@ -49,7 +49,7 @@ public class notice extends Fragment {
     private String description;
     private String created_date;
 
-    public notice() {
+    public NewsFragment() {
 
     }
 
@@ -57,7 +57,7 @@ public class notice extends Fragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        v = inflater.inflate(R.layout.fragment_news,container,false);
+        v = inflater.inflate(R.layout.news_fragment,container,false);
 
         baseUrl = "http://gamenewsuca.herokuapp.com/";
 

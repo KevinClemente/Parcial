@@ -2,7 +2,7 @@ package com.example.elsalvador.parcial.Interface;
 
 import com.example.elsalvador.parcial.Object.News;
 import com.example.elsalvador.parcial.Object.TopPlayers;
-import com.example.elsalvador.parcial.Object.usuario;
+import com.example.elsalvador.parcial.Object.User;
 
 import java.util.List;
 
@@ -17,7 +17,7 @@ public interface RequestHelper {
     @FormUrlEncoded
     @POST("login")
 
-    Call<usuario> loginRequest(@Field("user") String username, @Field("password") String password);
+    Call<User> loginRequest(@Field("user") String username, @Field("password") String password);
 
     @GET("news")
     Call<List<News>> getNewsRequest(@Header("Authorization") String token);

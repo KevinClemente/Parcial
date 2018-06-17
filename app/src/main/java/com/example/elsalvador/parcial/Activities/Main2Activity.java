@@ -9,15 +9,11 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.view.Menu;
 import android.view.MenuItem;
 
-import com.example.elsalvador.parcial.Fragment.Fragment_Games;
-import com.example.elsalvador.parcial.Fragment.Generals;
-import com.example.elsalvador.parcial.Fragment.notice;
+import com.example.elsalvador.parcial.Fragment.GameInfoFragment;
+import com.example.elsalvador.parcial.Fragment.NewsFragment;
 import com.example.elsalvador.parcial.R;
-import com.example.elsalvador.parcial.Fragment.Set;
-import com.example.elsalvador.parcial.Fragment.Images;
 
 public class Main2Activity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -67,19 +63,19 @@ public class Main2Activity extends AppCompatActivity
 
         switch (id) {
             case R.id.News:
-                replaceFragment(new notice());
+                replaceFragment(new NewsFragment());
                 break;
 
             case R.id.LOL:
-                replaceFragment(new Fragment_Games());
+                replaceFragment(new GameInfoFragment());
                 break;
 
             case R.id.Dota:
-                replaceFragment(new Fragment_Games());
+                replaceFragment(new GameInfoFragment());
                 break;
 
             case R.id.CSGO:
-                replaceFragment(new Fragment_Games());
+                replaceFragment(new GameInfoFragment());
                 break;
 
             //case R.id.Set:

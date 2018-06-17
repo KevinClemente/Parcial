@@ -6,9 +6,10 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.example.elsalvador.parcial.Interface.RequestHelper;
-import com.example.elsalvador.parcial.Object.usuario;
+import com.example.elsalvador.parcial.Object.User;
 import com.example.elsalvador.parcial.R;
 
 import retrofit2.Call;
@@ -25,7 +26,7 @@ public class Login extends AppCompatActivity{
     private RequestHelper requestHelper;
     private String baseUrl;
     private Retrofit retrofit;
-    private Call<usuario> call;
+    private Call<User> call;
     public static String globalToken;
     private Intent toNavDrawer;
 
@@ -44,7 +45,6 @@ public class Login extends AppCompatActivity{
         passwordEditText = findViewById(R.id.Contrasena);
         singInButton = findViewById(R.id.Boton);
 
-
         baseUrl = "http://gamenewsuca.herokuapp.com/";
 
         if(retrofit == null){
@@ -62,20 +62,23 @@ public class Login extends AppCompatActivity{
 
                 call = requestHelper.loginRequest(usernarmeEditText.getText().toString(), passwordEditText.getText().toString());
 
-                call.enqueue(new Callback<usuario>() {
+                call.enqueue(new Callback<User>() {
                     @Override
-                    public void onResponse(Call<usuario> call, Response<usuario> response) {
+                    public void onResponse(Call<User> call, Response<User> response) {
 
-                        if(response.body().getToken() != null){
+                        if(response.code() != 401){
                             globalToken = response.body().getToken().toString();
                             toNavDrawer = new Intent(Login.this,Main2Activity.class);
                             startActivity(toNavDrawer);
                         }
+                        else{
+                            Toast.makeText(getApplicationContext(),"Usuario erroneo",Toast.LENGTH_LONG).show();
+                        }
                     }
 
                     @Override
-                    public void onFailure(Call<usuario> call, Throwable t) {
-
+                    public void onFailure(Call<User> call, Throwable t) {
+                        Toast.makeText(getApplicationContext(),"Sin Conexion",Toast.LENGTH_LONG).show();
                     }
                 });
             }

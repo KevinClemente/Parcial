@@ -16,7 +16,7 @@ import android.view.ViewGroup;
 import com.example.elsalvador.parcial.R;
 import com.example.elsalvador.parcial.Adapters.adaptadorViewPager;
 
-public class Fragment_Games extends Fragment {
+public class GameInfoFragment extends Fragment {
     private TabLayout TabLayoutMenu;
     private ViewPager AllColumns;
     private  adaptadorViewPager ColumnElements;
@@ -25,15 +25,15 @@ public class Fragment_Games extends Fragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        view = inflater.inflate(R.layout.fragments_games, container, false);
+        view = inflater.inflate(R.layout.game_info_fragment, container, false);
 
         TabLayoutMenu = (TabLayout) view.findViewById(R.id.tablayout_menu);
         AllColumns = (ViewPager) view.findViewById(R.id.viewpager);
         ColumnElements = new adaptadorViewPager(getChildFragmentManager());
 
-        ColumnElements.AddFragment(new Generals(), "GENERALS");
+        ColumnElements.AddFragment(new GeneralsFragment(), "GENERALS");
         ColumnElements.AddFragment(new TopPlayersFragment(), "TOP PLAYERS");
-        ColumnElements.AddFragment(new Images(), "IMAGES");
+        ColumnElements.AddFragment(new ImagesFragment(), "IMAGES");
         TabLayoutMenu.setTabTextColors(Color.parseColor("#727272"), Color.parseColor("#ffffff"));
 
 

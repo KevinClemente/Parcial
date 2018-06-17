@@ -3,14 +3,14 @@ package com.example.elsalvador.parcial.Object;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class usuario {
+public class User {
 
     @SerializedName("token")
     @Expose
 
     private String token;
 
-    public usuario(String token) {
+    public User(String token) {
         this.token = token;
     }
 

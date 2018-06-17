@@ -29,7 +29,7 @@ public class AdapterCardviewNews extends RecyclerView.Adapter<AdapterCardviewNew
     @Override
     public MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View v;
-        v = LayoutInflater.from(context).inflate(R.layout.cardview_news,parent,false);
+        v = LayoutInflater.from(context).inflate(R.layout.news_item,parent,false);
         MyViewHolder viewHolder = new MyViewHolder(v);
         return viewHolder;
     }

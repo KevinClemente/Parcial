@@ -1,30 +1,40 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.elsalvador.parcial">
+package="com.example.elsalvador.parcial">
 
-    <uses-permission android:name="android.permission.INTERNET"></uses-permission>
+<uses-permission android:name="android.permission.INTERNET" />
 
+<application
+    android:allowBackup="true"
+    android:icon="@mipmap/ic_launcher"
+    android:label="@string/app_name"
+    android:roundIcon="@mipmap/ic_launcher_round"
+    android:supportsRtl="true"
+    android:theme="@style/AppTheme">
 
-    <application
-        android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
-        android:label="@string/app_name"
-        android:roundIcon="@mipmap/ic_launcher_round"
-        android:supportsRtl="true"
-        android:theme="@style/AppTheme">
-        <activity
-            android:name=".Activities.Main2Activity"
-            android:label="@string/title_activity_main2"
-            android:theme="@style/AppTheme.NoActionBar">
+    <!-- NEWS FRAGMENT -->
+    <activity
+        android:name=".Fragment.NewsFragment"
+        android:label="news_fragment_name" />
 
-        </activity>
+    <!-- NAVIGATION DRAWER -->
+    <activity
+        android:name=".Activities.Main2Activity"
+        android:label="title_activity_navigation_drawer"
+        android:theme="@style/AppTheme.NoActionBar" />
 
-        <activity android:name=".Activities.Login">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
-    </application>
+    <!-- LOGIN -->
+    <activity android:name=".Activities.Login">
+        <intent-filter>
+            <action android:name="android.intent.action.MAIN" />
+
+            <category android:name="android.intent.category.LAUNCHER" />
+        </intent-filter>
+    </activity>
+    <activity android:name=".Activities.Settings" />
+    <activity android:name=".Activities.ShowNews" />
+    <activity android:name=".Activities.ShowTopPlayers" />
+    <activity android:name=".Activities.ShowImages"></activity>
+</application>
 
 </manifest>
